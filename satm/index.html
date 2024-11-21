@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map of Andhra Pradesh</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        body {
+            background-color: #000000;
+            background-position: center;
+            background-size: cover;
+            font-family: 'Times New Roman', Times, serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            /* background-color: rgb(120, 169, 152); */
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 2.5em;
+            color: #ffbb00;
+            /* background: linear-gradient(to right, #f32170, 
+                    #ff6b08, #cf23cf, #eedd44); 
+            -webkit-text-fill-color: transparent; 
+            -webkit-background-clip: text;  */
+            
+            /* color: #e8ef21; */
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .content {
+            width: 80%;
+            max-width: 2000px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.7);
+            animation: fadeInLeft 2s ease-in-out;
+        }
+        .water{
+            height: 400px;
+            width: 40%;
+            float: right;
+            border-radius: 20px;
+            background-repeat: no-repeat;
+            box-shadow: 0px 4px 10px rgba(10, 5, 10, 0.9);
+        }
+        .w_atm{
+            margin-top: 800px;
+            margin-right: -520px;
+            height: 450px;
+            width: 40%;
+            float: right;
+            border-radius: 20px;
+            background-repeat: no-repeat;
+            box-shadow: 0px 4px 10px rgba(10, 5, 10, 0.9);
+        }
+
+        .content h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .content h3 {
+            color: #555;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .content p, .content ul {
+            color: #333;
+            line-height: 1.6;
+            font-size: 1.5em;
+        }
+
+        .content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .content ul li {
+            margin-bottom: 5px;
+        }
+
+        #map {
+            height: 800px;
+            width: 80%;
+            max-width: 2000px;
+            border: 4px solid #37fff5;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(10, 5, 10, 0.9);
+            margin-bottom: 20px;
+            margin-top: 20px;
+           
+        }
+
+        .link-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link-container a {
+            color: #fd02a1;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .link-container a:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>SMART ANYTIME WATER MACHINE's</h1>
+    <div class="content">
+
+        <img src="images/water.jpg" class="water">
+        <img src="images/water atm.png" class="w_atm">
+
+        <h2>The Importance of High-Quality <span style="color: rgb(59, 93, 212);">WATER</span></h2>
+        <p>Water is the essence of life, and access to clean, high-quality water is vital for health, development, and sustainability. Below are some key benefits of ensuring water quality:</p>
+        <ul>
+            <li><strong>🌊 Health and Well-being:</strong> Clean water supports hydration, nutrient absorption, and essential bodily functions, reducing the risk of waterborne diseases and improving overall health.</li>
+            <li><strong>💧 Safe Drinking Water:</strong> Access to safe and affordable drinking water ensures the well-being of communities, particularly in areas prone to contamination.</li>
+            <li><strong>🌱 Agricultural Productivity:</strong> Clean water plays a crucial role in agriculture, enhancing crop yields and supporting livestock health, which directly impacts food security.</li>
+            <li><strong>🌍 Environmental Sustainability:</strong> By maintaining water quality, we contribute to environmental balance, safeguarding ecosystems, and preserving biodiversity.</li>
+        </ul>
+
+        <h2>Water ATMs: A Smart Solution for Clean Water</h2>
+        <p>Water ATMs are innovative self-service water dispensing machines designed to provide affordable and safe drinking water. They are a transformative solution for urban and rural communities alike. Here's how they work and why they're a game-changer:</p>
+        <h3>How Do Water ATMs Work?</h3>
+        <p>Water ATMs use advanced filtration technology to purify water, ensuring it is clean and safe for consumption. These machines are typically installed in public areas like schools, hospitals, bus stops, and community centers.</p>
+        
+        <h3>Benefits of Water ATMs</h3>
+        <ul>
+            <li><strong>24/7 Accessibility:</strong> Available around the clock, ensuring clean drinking water even during emergencies or natural disasters.</li>
+            <li><strong>Cost-effective:</strong> Easy to operate and maintain, making them ideal for low-resource communities.</li>
+            <li><strong>Eco-friendly:</strong> By reducing the reliance on bottled water, Water ATMs minimize plastic waste and promote sustainable practices.</li>
+            <li><strong>Health-focused:</strong> Provide safe and filtered water, reducing the prevalence of waterborne illnesses.</li>
+        </ul>
+
+        <h3>Environmental Impact</h3>
+        <p>Water ATMs reduce dependency on traditional water sources like bottled water or boiled water, thereby conserving resources and reducing energy consumption. They also decrease the distance people need to travel to fetch water, which has a positive impact on daily lives.</p>
+        
+        <h2>A Step Toward a Sustainable Future 👣</h2>
+        <p>Water ATMs not only ensure public health but also support environmental sustainability. They are a practical, scalable solution that addresses one of humanity's most pressing challenges: access to clean and safe drinking water.</p>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="link-container">
+        <h3>For more detailed water resources data, visit the <a href="https://apwrims.ap.gov.in/gis/geoportal?mainGeoportal__location=AP%23%236f86292b-dd9a-4987-bb8f-c3940263b349%26Eluru%23%23e29d1e0f-97fe-4325-8d04-098b3aa48a17%26MUDINAPALLE%23%235e6b2ed8-4cef-49a3-84f4-156120714541&mainGeoportal__hierarchyId=COMMON_GIS_ADMIN&mainGeoportal__hierarchyType=admin&mainGeoportal__applicationName=geoportal&mainGeoportal__defaultOpen=Layers%20List" target="_blank">APWRIMS Geoportal</a>.</h3>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([16.5063, 80.6480], 10);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.marker([16.5063, 80.6480]).addTo(map)
+            .bindPopup('Vijayawada - A major city in Andhra Pradesh. Water availability and sanitation issues are key concerns.')
+            .openPopup();
+
+        L.marker([17.6869, 83.2185]).addTo(map)
+            .bindPopup('Visakhapatnam - Coastal city with water availability challenges.');
+        L.marker([14.7952, 78.1614]).addTo(map)
+            .bindPopup('Tirupati - A religious hub with water management concerns.');
+        L.marker([15.8557, 79.3941]).addTo(map)
+            .bindPopup('Kurnool - Facing severe water scarcity issues.');
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map of Andhra Pradesh</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        body {
+            background-color: #666363;
+            background-image: url("water.jpg");
+            background-position: center;
+            background-size: cover;
+            /* backdrop-filter: brightness(0.5); */
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        h1 {
+            background-color: rgb(120, 169, 152);
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 2.5em;
+            color: #f47600;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+        }
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px); /* Start 50px left */
+            }
+            to {
+                opacity: 10;
+                transform: translateX(0); /* End at normal position */
+            }
+        }
+ 
+        /* Image animation */
+        .animated-image {
+            width: 500px;
+            height: 400px;
+            margin: 20px 0;
+            border-radius: 50px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeInLeft 3s ease-in; /* Apply fade-in effect */
+        }
+ 
+        /* .animated-image:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+        } */
+ 
+        #map {
+            height: 600px;
+            width: 80%;
+            max-width: 1000px;
+            border: 3px solid #37fff5;
+            border-radius: 8px;
+            box-shadow: 5px 5px 15px 10px rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+            /* inset: 15px 30px 60px 90px; */
+        }
+ 
+        .link-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+ 
+        .link-container a {
+            color: #fd02a1;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+ 
+        .link-container a:hover {
+            color: #000000;
+        }
+ 
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+            max-width: 600px;
+        }
+ 
+        li {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #e130cf;
+            font-weight: bold;
+            padding: 5px 0;
+            line-height: 1.5;
+        }
+        .para{
+            color: white;
+            background: linear-gradient(to right, rgb(186, 144, 144), rgb(152, 157, 152));
+            font-weight: bold;
+            z-index: auto;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <h1>SMART ANYTIME WATER MACHIENE's</h1>
+    <p class="para">The Importance of High-Quality Water :
+        <br><br>🌊 Health: High-quality water is essential for health, supporting hydration, nutrient absorption, and overall bodily functions.
+        <br><br>💧 Safe Drinking: It ensures safe drinking, reducing the risk of waterborne diseases.
+        <br><br>🌱 Agricultural Productivity: Clean water enhances agricultural productivity, providing cleaner water for crops and livestock.
+        <wrap><br><br>🌍 Environmental Sustainability: Clean water contributes to environmental health and sustainability, supporting ecosystems and biodiversity.</wrap>
+        Water ATMs are an innovative solution to address the issue of clean drinking water in India. These machines are designed to provide access to safe and affordable drinking water to people in urban as well as rural areas. If you’re looking for a reliable source of clean water in India, consider the water ATMs 
+        How It Works ?
+Water ATM Machine: A Solution for Safe and Accessible Drinking Water
+
+Access to safe and clean drinking water is a basic human right. However, many people in developing countries still lack access to this essential resource. In such areas, Water ATM machines have emerged as a promising solution to address this issue.
+
+A Water ATM machine is a self-service water dispensing unit that provides clean and safe drinking water to people in a convenient and affordable manner. These machines use advanced filtration technology to purify water, making it safe for consumption. They are typically installed in public places such as schools, hospitals, community centers, and bus stands.
+
+One of the biggest advantages of Water ATM machines is that they provide access to clean drinking water 24/7. This means that people can get safe and healthy drinking water at any time, even during emergencies or natural disasters. Additionally, these machines are easy to operate and require minimal maintenance, making them a cost-effective solution for communities with limited resources.
+
+Water ATM machines also have a positive impact on the environment. By providing access to safe drinking water, they reduce the need for people to rely on bottled water, which contributes to plastic waste. Moreover, they help to conserve natural resources by reducing the need for people to boil water or collect water from distant sources.
+
+In summary, Water ATM machines offer a practical and sustainable solution to the problem of access to safe drinking water. They are easy to install, operate and maintain, making them an ideal option for communities that lack access to clean water. By providing access to safe drinking water, they not only improve public health but also promote environmental sustainability.
+    </p>
+    <!-- <ul>
+        <span style="color: aqua; font-weight: bold;">Drinking water has many benefits, including:</span>
+        <li>Lubricating joints</li>
+        <li>Regulating body temperature</li>
+        <li>Aiding digestion</li>
+        <li>Flushing out waste</li>
+        <li>Supporting open airways</li>
+        <li>Aiding weight loss</li>
+        <li>Enhancing exercise performance</li>
+        <li>Reducing allergy and asthma symptoms</li>
+        <li>Keeping skin healthy</li>
+    </ul> 
+    <img class="animated-image" src="water1.webp" height="400px" width="500px"></img>
+
+    <div id="map"></div>
+ 
+    <div class="link-container">
+        <h3>For more detailed water resources data, visit the <a href="https://apwrims.ap.gov.in/gis/geoportal?mainGeoportal__location=AP%23%236f86292b-dd9a-4987-bb8f-c3940263b349%26Eluru%23%23e29d1e0f-97fe-4325-8d04-098b3aa48a17%26MUDINAPALLE%23%235e6b2ed8-4cef-49a3-84f4-156120714541&mainGeoportal__hierarchyId=COMMON_GIS_ADMIN&mainGeoportal__hierarchyType=admin&mainGeoportal__applicationName=geoportal&mainGeoportal__defaultOpen=Layers%20List" target="_blank">APWRIMS Geoportal</a>.</h3>
+    </div>
+ 
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([16.5063, 80.6480], 10);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+ 
+        L.marker([16.5063, 80.6480]).addTo(map)
+            .bindPopup('Vijayawada - A major city in Andhra Pradesh. Water availability and sanitation issues are key concerns.')
+            .openPopup();
+ 
+        L.marker([17.6869, 83.2185]).addTo(map)
+            .bindPopup('Visakhapatnam - Coastal city with water availability challenges.');
+        L.marker([14.7952, 78.1614]).addTo(map)
+            .bindPopup('Tirupati - A religious hub with water management concerns.');
+        L.marker([15.8557, 79.3941]).addTo(map)
+            .bindPopup('Kurnool - Facing severe water scarcity issues.');
+    </script>
+</body>
+</html> -->
