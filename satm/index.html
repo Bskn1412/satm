@@ -128,12 +128,6 @@
         .link-container a:hover {
             color: #000;
         }
-        @media (min-width: 768px) {
-            .water, .w_atm {
-                float: right;
-                 width: 40%;
-           }
-        }
         #chart_div{
             height: 300px;
             width: 100%;
@@ -141,6 +135,27 @@
         #chart_2_div{
             height: 300px;
             width: 100%;
+        }
+         @media screen and (max-width: 768px) {
+            .water, .w_atm {
+                width: 100%;
+                height: auto; 
+                float: none;
+                margin: 20px auto;
+            }
+            #map {
+                width: 60%; 
+                height: 400px; 
+                margin: 20px auto; 
+            }
+            #chart_div, #chart_2_div {
+                width: 100%; 
+                height: auto;
+                margin: 20px auto; 
+            }
+            .content {
+                text-align: center;
+                }
         }
     </style>
 </head>
