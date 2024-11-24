@@ -246,14 +246,13 @@
         <h3>For more detailed water resources data, visit the <a href="https://apwrims.ap.gov.in/gis/geoportal?mainGeoportal__location=AP%23%236f86292b-dd9a-4987-bb8f-c3940263b349%26Eluru%23%23e29d1e0f-97fe-4325-8d04-098b3aa48a17%26MUDINAPALLE%23%235e6b2ed8-4cef-49a3-84f4-156120714541&mainGeoportal__hierarchyId=COMMON_GIS_ADMIN&mainGeoportal__hierarchyType=admin&mainGeoportal__applicationName=geoportal&mainGeoportal__defaultOpen=Layers%20List" target="_blank">APWRIMS Geoportal</a>.</h3>
     </div>
 
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([16.2251, 81.0587], 10); // Set initial view for Gudlavalleru
+        var map = L.map('map').setView([16.2251, 81.0587], 10); 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
         L.marker([16.2251, 81.0587]).addTo(map)
-            .bindPopup('Gudlavalleru - A town in Andhra Pradesh, known for its agricultural significance and water supply challenges.', {max-width : 200})
+            .bindPopup('Gudlavalleru - A town in Andhra Pradesh, known for its agricultural significance and water supply challenges.', { maxWidth: 200 })
             .openPopup();
         L.marker([16.5063, 80.6480]).addTo(map)
             .bindPopup('Vijayawada - A major city in Andhra Pradesh. Water availability and sanitation issues are key concerns.')
