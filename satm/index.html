@@ -6,7 +6,7 @@
     <title>Smart ATWM</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
-         body {
+        body {
             background-color: #000000;
             background-position: center;
             background-size: cover;
@@ -99,7 +99,7 @@
         .content ul li {
             margin-bottom: 5px;
         }
-
+        
         #map {
             height: 800px;
             width: 80%;
@@ -126,8 +126,9 @@
         }
 
         .link-container a:hover {
-            color: #000;
+            color: #ffffff;
         }
+
         #chart_div{
             height: 300px;
             width: 100%;
@@ -136,12 +137,12 @@
             height: 300px;
             width: 100%;
         }
-         @media screen and (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .water, .w_atm {
                 width: 100%;
                 height: auto; 
                 float: none;
-                margin: 20px auto;
+                margin: 10px auto;
             }
             #map {
                 width: 60%; 
@@ -194,9 +195,14 @@
         <h2>A Step Toward a Sustainable Future 👣</h2>
         <p>Water ATMs not only ensure public health but also support environmental sustainability. They are a practical, scalable solution that addresses one of humanity's most pressing challenges: access to clean and safe drinking water.</p>
   
+
+
     <h2>Some Reports 📝</h2>
     <div id="chart_div"></div>
+
     <div id="chart_2_div"></div>
+
+
     <!-- for chart_div -->
     <!-- <a style="font-size:12px;color:#BDBDBD" href="https://livechatai.com/">Powered by LiveChatAI</a> -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -217,6 +223,7 @@
           var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
           chart.draw(data, options);
         }
+     
         //  for 2_chart_div
         // <a style="font-size:12px;color:#BDBDBD" href="https://livechatai.com/">Powered by LiveChatAI</a>
         // <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -239,29 +246,41 @@
         chart.draw(data, options);
         }
     </script>
+
 </div>
-    
+
+
     <div id="map"></div>
+
     <div class="link-container">
         <h3>For more detailed water resources data, visit the <a href="https://apwrims.ap.gov.in/gis/geoportal?mainGeoportal__location=AP%23%236f86292b-dd9a-4987-bb8f-c3940263b349%26Eluru%23%23e29d1e0f-97fe-4325-8d04-098b3aa48a17%26MUDINAPALLE%23%235e6b2ed8-4cef-49a3-84f4-156120714541&mainGeoportal__hierarchyId=COMMON_GIS_ADMIN&mainGeoportal__hierarchyType=admin&mainGeoportal__applicationName=geoportal&mainGeoportal__defaultOpen=Layers%20List" target="_blank">APWRIMS Geoportal</a>.</h3>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([16.2251, 81.0587], 10); 
+        var map = L.map('map').setView([16.2251, 81.0587], 10); // Set initial view for Gudlavalleru
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
+    
+        // Marker for Gudlavalleru
         L.marker([16.2251, 81.0587]).addTo(map)
             .bindPopup('Gudlavalleru - A town in Andhra Pradesh, known for its agricultural significance and water supply challenges.', { maxWidth: 200 })
             .openPopup();
         L.marker([16.5063, 80.6480]).addTo(map)
             .bindPopup('Vijayawada - A major city in Andhra Pradesh. Water availability and sanitation issues are key concerns.')
+        // Uncommented Marker for Visakhapatnam
         L.marker([17.6869, 83.2185]).addTo(map)
             .bindPopup('Visakhapatnam - Coastal city with water availability challenges.');
+    
+        // Uncommented Marker for Tirupati
         L.marker([14.7952, 78.1614]).addTo(map)
             .bindPopup('Tirupati - A religious hub with water management concerns.');
+    
+        // Uncommented Marker for Kurnool
         L.marker([15.8557, 79.3941]).addTo(map)
             .bindPopup('Kurnool - Facing severe water scarcity issues.');
     </script>
+    
 </body>
 </html>
