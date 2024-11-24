@@ -128,6 +128,20 @@
         .link-container a:hover {
             color: #000;
         }
+        @media (min-width: 768px) {
+            .water, .w_atm {
+                float: right;
+                 width: 40%;
+           }
+        }
+        #chart_div{
+            height: 300px;
+            width: 100%;
+        }
+        #chart_2_div{
+            height: 300px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -165,9 +179,54 @@
         <h2>A Step Toward a Sustainable Future 👣</h2>
         <p>Water ATMs not only ensure public health but also support environmental sustainability. They are a practical, scalable solution that addresses one of humanity's most pressing challenges: access to clean and safe drinking water.</p>
     </div>
-
+    <h2>Some Reports 📝</h2>
+    <div id="chart_div"></div>
+    <div id="chart_2_div"></div>
+    <!-- for chart_div -->
+    <!-- <a style="font-size:12px;color:#BDBDBD" href="https://livechatai.com/">Powered by LiveChatAI</a> -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Disease', 'Cases'],
+            ['Cholera', 844],
+            ['Acute Diarrhoeal Diseases', 11748631],
+            ['Enteric Fever (Typhoid)', 1736687],
+            ['Viral Hepatitis', 138554]
+          ]);
+          var options = {
+            title: 'Water Borne Diseases Cases in India (2014-2016)'
+          };
+          var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+          chart.draw(data, options);
+        }
+        //  for 2_chart_div
+        // <a style="font-size:12px;color:#BDBDBD" href="https://livechatai.com/">Powered by LiveChatAI</a>
+        // <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Climate Vulnerability', 15],
+            ['Health Adaptation Plans', 25],
+            ['Climate Sensitive Diseases', 20],
+            ['Public Health Initiatives', 30],
+            ['Research and Development', 10]
+        ]);
+        var options = {
+            title: 'Focus Areas in Climate Change and Health in Andhra Pradesh'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('chart_2_div'));
+        chart.draw(data, options);
+        }
+    </script>
+</div>
+    
     <div id="map"></div>
-
     <div class="link-container">
         <h3>For more detailed water resources data, visit the <a href="https://apwrims.ap.gov.in/gis/geoportal?mainGeoportal__location=AP%23%236f86292b-dd9a-4987-bb8f-c3940263b349%26Eluru%23%23e29d1e0f-97fe-4325-8d04-098b3aa48a17%26MUDINAPALLE%23%235e6b2ed8-4cef-49a3-84f4-156120714541&mainGeoportal__hierarchyId=COMMON_GIS_ADMIN&mainGeoportal__hierarchyType=admin&mainGeoportal__applicationName=geoportal&mainGeoportal__defaultOpen=Layers%20List" target="_blank">APWRIMS Geoportal</a>.</h3>
     </div>
