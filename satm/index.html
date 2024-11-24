@@ -233,10 +233,15 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([16.5063, 80.6480], 10);
+        var map = L.map('map').setView([16.2251, 81.0587], 10); // Set initial view for Gudlavalleru
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
+    
+        // Marker for Gudlavalleru
+        L.marker([16.2251, 81.0587]).addTo(map)
+            .bindPopup('Gudlavalleru - A town in Andhra Pradesh, known for its agricultural significance and water supply challenges.')
+            .openPopup();
 
         L.marker([16.5063, 80.6480]).addTo(map)
             .bindPopup('Vijayawada - A major city in Andhra Pradesh. Water availability and sanitation issues are key concerns.')
